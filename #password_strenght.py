@@ -8,6 +8,9 @@ def  password_level(password):
     level_1 = r"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
     level_2 = r"^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
     level_3 = r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+    common_passwords = ['password', '123456', '12345678', '12345', '123456789', 'qwerty', 'abc123', \
+                        'letmein', '1234', 'password1']
+    
 
     #Strengh level variable
     strength_level = 0
@@ -33,12 +36,19 @@ def  password_level(password):
     elif strength_level == 3:
         print("\nPassword strenght level: 3 ")
 
+    elif password.lower() in common_passwords:
+        print("Warning: This is a commonly used password, consider a more secure one.")
+        return "Weak"
+
     else:
         print("\nInvalid password format.")
 
 #Input from the user
 
-print("\nPASSWORD STRENGHT: \nLevel 0: eight characters that are not spaces. \nLevel 1: eight characters with at least one letter and one number. \nLevel 2: level 1 and one special character (@$!%*#?&). \nLevel 3: level 2 and one upper case character. ")
+print("\nPASSWORD STRENGHT: \nLevel 0: eight characters that are not spaces. \
+      \nLevel 1: eight characters with at least one letter and one number. \
+      \nLevel 2: level 1 and one special character (@$!%*#?&). \
+      \nLevel 3: level 2 and one upper case character. ")
 
 password = input("\nEnter password: ")
 password_level(password)
